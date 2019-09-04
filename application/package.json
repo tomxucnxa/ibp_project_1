@@ -1,0 +1,21 @@
+{
+    "name": "vehiclesharing-application",
+    "version": "1.0.0",
+    "homepage": "https://github.com/tomxucnxa/vehiclesharing",
+    "devDependencies": {
+      "@types/bytebuffer": "^5.0.34",
+      "winston": "^2.2.0",
+      "fabric-network": "^1.4.4"
+    },
+    "license": "Apache-2.0",
+    "licenses": [
+      {
+        "type": "Apache-2.0",
+        "url": "https://github.com/tomxucnxa/vehiclesharing/blob/master/LICENSE"
+      }
+    ],
+    "dependencies": {
+      "grpc": "^1.22.2"
+    }
+  }
+  
