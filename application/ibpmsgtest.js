@@ -64,7 +64,7 @@ async function testTransaction(msgId, msg) {
         const wallet = await initAdminWallet(identityLabel);
         const gateway = new Gateway();
 
-        await gateway.connect(path.join(__dirname, './connections/mychannel_simplemsg_profile.json'),
+        await gateway.connect(path.join(__dirname, './connections/mychannel_ibpsimplemsg_profile.json'),
             {
                 wallet: wallet,
                 identity: identityLabel,
