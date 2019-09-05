@@ -31,7 +31,9 @@ switch (arg) {
 
 async function testInvokeThenQuery() {
     let msgId = await testTransaction();
-    await testQuery(msgId);
+    if (msgId) {
+        await testQuery(msgId);
+    }
 }
 
 async function testQuery(msgId) {
@@ -50,8 +52,8 @@ async function testQuery(msgId) {
     logger.info('Gateway connects get succeed in query testing.');
 
     const network = await gateway.getNetwork('mychannel');
-    const contract = await network.getContract('simplemsg');
-    const result = await contract.evaluateTransaction('readSimplemsg', msgId);
+    const contract = await network.getContract('ibpsimplemsg');
+    const result = await contract.evaluateTransaction('readIbpsimplemsg', msgId);
     gateway.disconnect();
 
     logger.info('Query Result', Buffer.from(result).toString());
@@ -60,7 +62,7 @@ async function testQuery(msgId) {
 async function testTransaction(msgId, msg) {
     try {
         logger.info('==== Begin transaction');
-        const identityLabel = 'admin@org1';
+        const identityLabel = 'Admin Org1';
         const wallet = await initAdminWallet(identityLabel);
         const gateway = new Gateway();
 
@@ -74,7 +76,7 @@ async function testTransaction(msgId, msg) {
         logger.info('Gateway connects get succeed.');
 
         const network = await gateway.getNetwork('mychannel');
-        const contract = await network.getContract('simplemsg');
+        const contract = await network.getContract('ibpsimplemsg');
         if (!msgId) {
             msgId = getRandomId();
         }
@@ -82,7 +84,7 @@ async function testTransaction(msgId, msg) {
             msg = "MSG_" + msgId;
         }
         logger.info('Create', msgId, msg);
-        const result = await contract.submitTransaction("createSimplemsg", msgId, msg);
+        const result = await contract.submitTransaction("createIbpsimplemsg", msgId, msg);
         gateway.disconnect();
 
         logger.info('Transaction Result', Buffer.from(result).toString());

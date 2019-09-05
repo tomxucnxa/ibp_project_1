@@ -79,6 +79,7 @@ typings/
 # Private file
 connections/
 identities/
+wallet/
 
 # vscode
 .vscode/
